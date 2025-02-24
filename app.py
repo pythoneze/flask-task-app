@@ -42,6 +42,4 @@ def home():
 
 # run the app
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()  # create the database tables if not exists
     app.run(debug=True)
