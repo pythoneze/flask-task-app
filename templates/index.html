@@ -12,25 +12,21 @@
     <h3>No tasks found.</h3>
     {% else %}
     <table>
-        <thead>
-            <tr>
-                <th>Task</th>
-                <th>Added</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for task in tasks %}
-            <tr>
-                <td>{{ task.content }}</td>
-                <td>{{ task.date.strftime("%Y-%m-%d") }}</td>
-                <td>
-                    <a href="delete/{{task.id}}">Delete</a>
-                    <a href="edit/{{task.id}}">Edit</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
+        <tr>
+            <th>Task</th>
+            <th>Added</th>
+            <th>Action</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.content }}</td>
+            <td>{{ task.date.strftime("%Y-%m-%d") }}</td>
+            <td>
+                <a href="delete/{{task.id}}">Delete</a>
+                <a href="edit/{{task.id}}">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
     </table>
     {% endif %}
 
