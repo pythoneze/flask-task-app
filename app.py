@@ -40,6 +40,17 @@ def home():
         tasks = MyTask.query.order_by(MyTask.date).all()
         return render_template('index.html', tasks=tasks)
 
+# delete an item
+@app.route('/delete/<int:id>')
+def delete_task(id:int):
+    task = MyTask.query.get_or_404(id) 
+    try:
+        db.session.delete(task) 
+        db.session.commit()
+        return redirect('/') 
+    except Exception as e:
+        return f"Error:{e}"
+
 # run the app
 if __name__ == '__main__':
     app.run(debug=True)
